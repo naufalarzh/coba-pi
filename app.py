@@ -47,3 +47,11 @@ if st.button("Prediksi"):
                 st.write(f"- **{label}** : {prob * 100:.2f}%")
         except Exception as e:
             st.error(f"Terjadi kesalahan saat prediksi: {e}")
+# Footer copyright
+st.markdown("---")
+st.markdown(
+    "<div style='text-align: center; color: gray;'>"
+    "© 2025 by Arkan. All rights reserved."
+    "</div>",
+    unsafe_allow_html=True
+)
