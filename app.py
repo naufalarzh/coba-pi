@@ -22,11 +22,22 @@ tokenizer, model = load_model_and_tokenizer()
 model = model.to(device)
 label_encoder = load_label_encoder()
 
-st.title("Dashboard Klasifikasi Sentimen")
+st.title("Dashboard Klasifikasi Sentimen 🧠")
 
-user_input = st.text_area("Masukkan kalimat:")
+# Penjelasan dengan emotikon dan kategori yang dianalisis
+st.markdown("""
+### Analisis Sentimen untuk Teks:
+Kami akan menganalisis kalimat Anda dan memberikan label sentimen berdasarkan kategori berikut:
+- **Ekonomi 💰**
+- **Pendidikan 🎓**
+- **Politik 🗳️**
 
-if st.button("Prediksi"):
+Gunakan kalimat terkait dengan ekonomi, pendidikan, atau politik untuk melihat hasilnya!
+""")
+
+user_input = st.text_area("Masukkan kalimat yang ingin dianalisis:")
+
+if st.button("Prediksi 🔮"):
     if user_input.strip() == "":
         st.warning("Tolong masukkan teks sebelum klik Prediksi.")
     else:
@@ -45,8 +56,10 @@ if st.button("Prediksi"):
             st.markdown("#### Probabilitas per label:")
             for label, prob in zip(label_encoder.classes_, probs):
                 st.write(f"- **{label}** : {prob * 100:.2f}%")
+
         except Exception as e:
             st.error(f"Terjadi kesalahan saat prediksi: {e}")
+
 # Footer copyright
 st.markdown("---")
 st.markdown(
